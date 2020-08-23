@@ -1,0 +1,16 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <SelectDialog
+        noDataText="No Request Type Found"
+        title="Select Request Type"
+        search="handleSearchReqType"
+        liveChange="handleSearchReqType"
+        confirm="onCloseDialogReqType"
+        items="{/GetReqTypeSet}" >
+        <StandardListItem
+            title="{Jereqtype}"
+            description="{Jereqdesc}"
+            type="Active"/>
+    </SelectDialog>
+</core:FragmentDefinition>

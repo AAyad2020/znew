@@ -1,0 +1,16 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core" xmlns:new="controls">
+    <SelectDialog
+        noDataText="No CompanyCode Found"
+        title="Select CompanyCode"
+        search="handleSearchCompany"
+        liveChange="handleSearchCompany"
+        confirm="onCloseDialogcompany"
+        items="{/GetCompCodeSet}" >
+        <StandardListItem
+            title="{Companycode}"
+            description="{Ccdesc}"
+            type="Active"/>
+    </SelectDialog>
+</core:FragmentDefinition>

@@ -1,0 +1,16 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core" >
+    <SelectDialog
+        noDataText="No Currency Found"
+        title="Select Currency"
+        search="handleSearchCurrency"
+        liveChange="handleSearchCurrency"
+        confirm="onCloseDialogCurrency"
+        items="{/GetCurrencySet}" >
+        <StandardListItem
+            title="{Currdes}"
+            description="{Currency}"
+            type="Active"/>
+    </SelectDialog>
+</core:FragmentDefinition>

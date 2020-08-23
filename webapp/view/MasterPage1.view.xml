@@ -1,0 +1,60 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="com.sap.jvPosting.controller.MasterPage1" xmlns="sap.m">
+	<Page title="Requests" showHeader="true" showFooter="true" navButtonPress="onNavBack" showNavButton="true">
+		<content>
+			<List id="list" mode="SingleSelectMaster" width="100%" headerText="Header" footerText="" backgroundDesign="Solid" showSeparators="All" growing="true"
+				growingThreshold="20" growingScrollToLoad="true" visible="true" selectionChange="onSelectionChange" items="{/JEREHeaderSet}">
+				<infoToolbar/>
+				<headerToolbar>
+					<Toolbar enabled="true" visible="true" width="" design="Solid">
+						<content>
+							<SearchField placeholder="Search" showSearchButton="true" visible="true" width="100%" search="handleSearchRequests"/>
+						</content>
+					</Toolbar>
+				</headerToolbar>
+				<items>
+					<ObjectListItem intro="Company code:-{Compcode}" title="{Requestid}" number="" numberUnit="" numberState="None" type="Active" selected="false"
+						showMarkers="false" press="onSelectionChange">
+						<attributes>
+							<ObjectAttribute title="Document Type" text="{Doctype}" active="false" visible="true"/>
+							<ObjectAttribute title="Date" text="{path:'Reqdate', type: 'sap.ui.model.type.DateTime', formatOptions: { pattern: 'MMMM d, y', strictParsing: false, relative: false } }" active="false" visible="true"/>
+						</attributes>
+						<firstStatus>
+							<ObjectStatus text="{Reqstatus}" state="{path:'Reqstatus',formatter:'.formatter.getstatus'}" visible="true"/>
+						</firstStatus>
+						<secondStatus/>
+					</ObjectListItem>
+					<!--<ObjectListItem intro="Company code" title="7777" number="23.10.2009" numberUnit="" numberState="None" type="Active" selected="false"-->
+					<!--	showMarkers="false">-->
+					<!--	<attributes>-->
+					<!--		<ObjectAttribute title="Document Type" text="zrrw" active="false" visible="true"/>-->
+					<!--	</attributes>-->
+					<!--	<firstStatus>-->
+					<!--		<ObjectStatus text="Submitted" state="Warning" visible="true"/>-->
+					<!--	</firstStatus>-->
+					<!--	<secondStatus/>-->
+					<!--</ObjectListItem>-->
+					<!--<ObjectListItem intro="Company code" title="6666" number="12.02.2003" numberUnit="" numberState="None" type="Active" selected="false"-->
+					<!--	showMarkers="false">-->
+					<!--	<attributes>-->
+					<!--		<ObjectAttribute title="Document Type" text="ziew" active="false" visible="true"/>-->
+					<!--	</attributes>-->
+					<!--	<firstStatus>-->
+					<!--		<ObjectStatus text="Rejected" state="Error" visible="true"/>-->
+					<!--	</firstStatus>-->
+					<!--	<secondStatus/>-->
+					<!--</ObjectListItem>-->
+				</items>
+			</List>
+		</content>
+		<footer>
+			<OverflowToolbar width="100%" height="46px" design="Auto" enabled="true" visible="true">
+				<content>
+					<ToolbarSpacer width=""/>
+					<Button text="Add Request" type="Default" icon="sap-icon://add-document" iconFirst="true" width="auto" enabled="true" visible="true"
+						iconDensityAware="false" press="_onButtonPress"/>
+				</content>
+			</OverflowToolbar>
+		</footer>
+		<headerContent/>
+	</Page>
+</mvc:View>

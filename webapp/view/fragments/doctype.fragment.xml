@@ -1,0 +1,16 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <SelectDialog
+        noDataText="No Document Type Found"
+        title="Select Document Type"
+        search="handleSearchDoc"
+        liveChange="handleSearchDoc"
+        confirm="onCloseDialogDoc"
+        items="{/GetDoctypeSet}" >
+        <StandardListItem
+            title="{Doctype}"
+            description="{Doctypdesc}"
+            type="Active"/>
+    </SelectDialog>
+</core:FragmentDefinition>

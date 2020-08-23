@@ -1,0 +1,89 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZGW_FI_JEREPOSTNEW_SRV" xml:lang="en" sap:schema-version="1">
+			<EntityType Name="JEREHeader" sap:content-version="1">
+				<Key><PropertyRef Name="Requestid"/></Key><Property Name="Requestid" Type="Edm.String" Nullable="false" MaxLength="12" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Requestorid" Type="Edm.String" Nullable="false" MaxLength="12" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Reqstatusid" Type="Edm.String" Nullable="false" MaxLength="2" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Reqstatus" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Reqdate" Type="Edm.DateTime" Nullable="false" Precision="7" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Reqtime" Type="Edm.Time" Nullable="false" Precision="0" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Reqtype" Type="Edm.String" Nullable="false" MaxLength="2" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Compcode" Type="Edm.String" Nullable="false" MaxLength="4" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Reasonje" Type="Edm.String" Nullable="false" MaxLength="40" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Doctype" Type="Edm.String" Nullable="false" MaxLength="2" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Currency" Type="Edm.String" Nullable="false" MaxLength="5" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false" sap:semantics="currency-code"/><Property Name="Approverid1" Type="Edm.String" Nullable="false" MaxLength="12" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Approvaldate1" Type="Edm.DateTime" Nullable="false" Precision="7" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Approvaltime1" Type="Edm.Time" Nullable="false" Precision="0" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Approverid2" Type="Edm.String" Nullable="false" MaxLength="12" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Approvaldate2" Type="Edm.DateTime" Nullable="false" Precision="7" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Approvaltime2" Type="Edm.Time" Nullable="false" Precision="0" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><NavigationProperty Name="JEREItemSet" Relationship="ZGW_FI_JEREPOSTNEW_SRV.ZASSOC_JERE_HI" FromRole="FromRole_ZASSOC_JERE_HI"
+					ToRole="ToRole_ZASSOC_JERE_HI"/><NavigationProperty Name="AttachFileJERESet" Relationship="ZGW_FI_JEREPOSTNEW_SRV.ZASSOC_JERE_ATTACHFILE"
+					FromRole="FromRole_ZASSOC_JERE_ATTACHFILE" ToRole="ToRole_ZASSOC_JERE_ATTACHFILE"/></EntityType>
+			<EntityType Name="JEREItem" sap:content-version="1">
+				<Key><PropertyRef Name="Requestid"/></Key><Property Name="Requestid" Type="Edm.String" Nullable="false" MaxLength="12" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Reqposnr" Type="Edm.String" Nullable="false" MaxLength="3" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Reqtype" Type="Edm.String" Nullable="false" MaxLength="2" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Dcind" Type="Edm.String" Nullable="false" MaxLength="2" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Glaccount1" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Accassignmnt1" Type="Edm.String" Nullable="false" MaxLength="20" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Glaccount2" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Accassignmnt2" Type="Edm.String" Nullable="false" MaxLength="20" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Amount" Type="Edm.Decimal" Nullable="false" Precision="14" Scale="3" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="AttachFileJERE" m:HasStream="true" sap:content-version="1">
+				<Key><PropertyRef Name="Requestid"/><PropertyRef Name="Filename"/></Key><Property Name="Mandt" Type="Edm.String" MaxLength="3" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Requestid" Type="Edm.String" Nullable="false" MaxLength="12" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Filename" Type="Edm.String" Nullable="false" MaxLength="200" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Uplddate" Type="Edm.DateTime" Precision="7" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Upldtime" Type="Edm.Time" Precision="0" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Value" Type="Edm.Binary" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Mimetype" Type="Edm.String" Nullable="false" MaxLength="128" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="GetCompanyCode" sap:content-version="1">
+				<Key><PropertyRef Name="Compcode"/></Key><Property Name="Compcode" Type="Edm.String" Nullable="false" MaxLength="4" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Ccdesc" Type="Edm.String" Nullable="false" MaxLength="25" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/></EntityType>
+			<EntityType Name="GetCurrency" sap:content-version="1">
+				<Key><PropertyRef Name="Currency"/></Key><Property Name="Currency" Type="Edm.String" Nullable="false" MaxLength="5" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false" sap:semantics="currency-code"/><Property Name="Currdes" Type="Edm.String" Nullable="false" MaxLength="15" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/></EntityType>
+			<EntityType Name="GetDoctype" sap:content-version="1">
+				<Key><PropertyRef Name="Doctype"/></Key><Property Name="Doctype" Type="Edm.String" Nullable="false" MaxLength="2" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Doctypdesc" Type="Edm.String" Nullable="false" MaxLength="20" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="GetGLAcc" sap:content-version="1">
+				<Key><PropertyRef Name="Glacc"/></Key><Property Name="IvCompcode" Type="Edm.String" Nullable="false" MaxLength="4" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Glacc" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Glaccdesc" Type="Edm.String" Nullable="false" MaxLength="20" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<Association Name="ZASSOC_JERE_ATTACHFILE" sap:content-version="1"><End Type="ZGW_FI_JEREPOSTNEW_SRV.JEREHeader" Multiplicity="1" Role="FromRole_ZASSOC_JERE_ATTACHFILE"/><End Type="ZGW_FI_JEREPOSTNEW_SRV.AttachFileJERE" Multiplicity="*" Role="ToRole_ZASSOC_JERE_ATTACHFILE"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_ZASSOC_JERE_ATTACHFILE"><PropertyRef Name="Requestid"/></Principal>
+					<Dependent Role="ToRole_ZASSOC_JERE_ATTACHFILE"><PropertyRef Name="Requestid"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="ZASSOC_JERE_HI" sap:content-version="1"><End Type="ZGW_FI_JEREPOSTNEW_SRV.JEREHeader" Multiplicity="1" Role="FromRole_ZASSOC_JERE_HI"/><End Type="ZGW_FI_JEREPOSTNEW_SRV.JEREItem" Multiplicity="*" Role="ToRole_ZASSOC_JERE_HI"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_ZASSOC_JERE_HI"><PropertyRef Name="Requestid"/></Principal>
+					<Dependent Role="ToRole_ZASSOC_JERE_HI"><PropertyRef Name="Requestid"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<EntityContainer Name="ZGW_FI_JEREPOSTNEW_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="JEREHeaderSet" EntityType="ZGW_FI_JEREPOSTNEW_SRV.JEREHeader" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="JEREItemSet" EntityType="ZGW_FI_JEREPOSTNEW_SRV.JEREItem" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:content-version="1"/><EntitySet Name="AttachFileJERESet" EntityType="ZGW_FI_JEREPOSTNEW_SRV.AttachFileJERE" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="GetCompanyCodeSet" EntityType="ZGW_FI_JEREPOSTNEW_SRV.GetCompanyCode" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="GetCurrencySet" EntityType="ZGW_FI_JEREPOSTNEW_SRV.GetCurrency" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="GetDoctypeSet" EntityType="ZGW_FI_JEREPOSTNEW_SRV.GetDoctype" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="GetGLAccSet" EntityType="ZGW_FI_JEREPOSTNEW_SRV.GetGLAcc" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:content-version="1"/>
+				<AssociationSet Name="ZASSOC_JERE_HISet" Association="ZGW_FI_JEREPOSTNEW_SRV.ZASSOC_JERE_HI" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="JEREHeaderSet" Role="FromRole_ZASSOC_JERE_HI"/><End EntitySet="JEREItemSet" Role="ToRole_ZASSOC_JERE_HI"/></AssociationSet>
+				<AssociationSet Name="ZASSOC_JERE_ATTACHFILESet" Association="ZGW_FI_JEREPOSTNEW_SRV.ZASSOC_JERE_ATTACHFILE" sap:creatable="false"
+					sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="JEREHeaderSet" Role="FromRole_ZASSOC_JERE_ATTACHFILE"/><End EntitySet="AttachFileJERESet" Role="ToRole_ZASSOC_JERE_ATTACHFILE"/></AssociationSet>
+			</EntityContainer><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZGW_FI_JEREPOSTNEW_SRV/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZGW_FI_JEREPOSTNEW_SRV/$metadata"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

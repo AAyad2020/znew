@@ -1,0 +1,16 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core" xmlns:new="controls">
+    <SelectDialog
+        noDataText="No G/L Account Found"
+        title="Select G/L Account"
+        search="handleSearchGl"
+        liveChange="handleSearchGl"
+        confirm="onCloseDialogGl"
+        items="{/GetGLAccSet}" >
+        <StandardListItem
+            title="{Glacc}"
+            description="{Glaccdesc}"
+            type="Active"/>
+    </SelectDialog>
+</core:FragmentDefinition>

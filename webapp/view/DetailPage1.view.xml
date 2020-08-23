@@ -1,0 +1,187 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="com.sap.jvPosting.controller.DetailPage1" xmlns="sap.m" xmlns:new="controls"
+	xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Page title="Detail Request" showHeader="true" showFooter="false" navButtonPress="handleNavButtonPress"
+		showNavButton="{device>/system/phone}">
+		<content>
+			<ObjectHeader intro="{i18n>comp_code}:-{Compcode}" title="Request No:- {Requestid}" number="" numberUnit="" numberState="None"
+				titleActive="false" backgroundDesign="Translucent" condensed="false" visible="true">
+				<attributes>
+					<ObjectAttribute title="{i18n>doc_type}" text="{Doctype}" active="false" visible="true"/>
+					<ObjectAttribute title="{i18n>req_type}" text="{Reqtype}" active="false" visible="true"/>
+				</attributes>
+				<statuses>
+					<ObjectStatus text="{Reqstatus}" state="{path:'Reqstatus',formatter:'.formatter.getstatus'}" visible="true"/>
+				</statuses>
+				<markers/>
+			</ObjectHeader>
+			<IconTabBar expandable="false" expanded="true" applyContentPadding="false" backgroundDesign="Solid" upperCase="false" visible="true"
+				selectedKey="Ok">
+				<items>
+					<IconTabFilter icon="sap-icon://hint" iconColor="Default" text="Details" count="" design="Vertical" showAll="false" textDirection="Inherit"
+						enabled="true" visible="true" iconDensityAware="false">
+						<content>
+							<form:Form width="100%" editable="false" visible="true">
+								<form:title/>
+								<form:formContainers>
+									<form:FormContainer visible="true">
+										<form:formElements>
+											<form:FormElement visible="true">
+												<form:label>
+													<Label text="{i18n>comp_code}" design="Bold" width="100%"  textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<Text text="{Compcode}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:fields>
+											</form:FormElement>
+											<form:FormElement visible="true">
+												<form:label>
+													<Label text="{i18n>req_type}" design="Bold" width="100%"  textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<Text text="{Reqtype}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:fields>
+											</form:FormElement>
+											<form:FormElement visible="true">
+												<form:label>
+													<Label text="{i18n>reason_jo}" design="Bold" width="100%"  textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<Text text="{Reasonje}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:fields>
+											</form:FormElement>
+											<form:FormElement visible="true">
+												<form:label>
+													<Label text="{i18n>doc_type}" design="Bold" width="100%"  textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<Text text="{Doctype}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:fields>
+											</form:FormElement>
+											<form:FormElement visible="true">
+												<form:label>
+													<Label text="{i18n>doc_curr}" design="Bold" width="100%"  textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<Text text="{Currency}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:fields>
+											</form:FormElement>
+										</form:formElements>
+										<form:title/>
+									</form:FormContainer>
+								</form:formContainers>
+								<form:layout>
+									<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+								</form:layout>
+							</form:Form>
+							<!--Tables -->
+							<!--Table of JV Posting -->
+							<Table id="JvitemsTable" inset="false" items="{/JEREItemSet}" width="95%" visible="{path:'Reqtype',formatter:'.formatter.getvisiability1'}" class="sapUiTinyMargin">
+								<headerToolbar>
+									<OverflowToolbar>
+										<content>
+											<Title text="Items" level="H2"/>
+											<ToolbarSpacer/>
+										</content>
+									</OverflowToolbar>
+								</headerToolbar>
+								<columns>
+									<!--<Column width="12em">-->
+									<!--	<Text text="Product"/>-->
+									<!--</Column>-->
+									<Column >
+										<Text text="{i18n>itemtype}"/>
+									</Column>
+									<Column >
+										<Text text="{i18n>Glaccount}"/>
+									</Column>
+									<Column >
+										<Text text="{i18n>accassign}"/>
+									</Column>
+									<Column >
+										<Text text="{i18n>amount}"/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem>
+										<cells>
+											<Text text="{path:'Dcind',formatter:'.formatter.gettypetext'}"></Text>
+											<Text text="{Glaccount1}"></Text>
+											<Text text="{Accassignmnt1}"></Text>
+											<Text text="{Amount}"></Text>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+							<!--Table of Re Classification -->
+							<Table id="ReitemsTable" inset="false" items="{/JEREItemSet}" width="95%" visible="{path:'Reqtype',formatter:'.formatter.getvisiability'}" class="sapUiTinyMargin">
+								<headerToolbar>
+									<OverflowToolbar>
+										<content>
+											<Title text="Items" level="H2"/>
+											<ToolbarSpacer/>
+										</content>
+									</OverflowToolbar>
+								</headerToolbar>
+								<columns>
+									<Column minScreenWidth="Tablet" >
+										<Text text="{i18n>currentgl}"/>
+									</Column>
+									<Column minScreenWidth="Desktop" >
+										<Text text="{i18n>currecntaccassign}"/>
+									</Column>
+									<Column >
+										<Text text="{i18n>reqgl}"/>
+									</Column>
+									<Column >
+										<Text text="{i18n>reqaccountassign}"/>
+									</Column>
+									<Column>
+										<Text text="{i18n>amount}"/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem>
+										<cells>
+											<Text text="{Glaccount1}"></Text>
+											<Text text="{Accassignmnt1}"></Text>
+											<Text text="{Glaccount2}"></Text>
+											<Text text="{Accassignmnt2}"></Text>
+											<Text text="{Amount}"></Text>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</content>
+					</IconTabFilter>
+					<IconTabFilter icon="sap-icon://attachment" iconColor="Default" text="Attachments" count="{path: '/AttachFileJERESet/$count'}"
+						design="Vertical" showAll="false" textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false">
+						<content>
+							<!--Attachment-->
+							<new:UploadFiles id="UploadCollection1" uploadEnabled="false" instantUpload="false" sameFilenameAllowed="false" maximumFilenameLength="55"
+								maximumFileSize="10" change="onChange" multiple="true" fileSizeExceed="onFileSizeExceed" typeMissmatch="onTypeMissmatch"
+								uploadComplete="onUploadComplete" uploadUrl="/sap/opu/odata/sap/ZGW_FI_JEREPOSTFI_SRV/JEREHeaderSet('{Requestid}')/AttachFileJERESet"
+								items="{/AttachFileJERESet}" beforeUploadStarts="onBeforeUploadStarts">
+								<UploadCollectionItem fileName="{Filename}" visibleDelete="false" visibleEdit="false" mimeType="{Mimetype}"
+									url="{parts:[{path:'Requestid'},{path:'Filename'}], formatter:'.formatter.getfilelink'}"/>
+							</new:UploadFiles>
+						</content>
+					</IconTabFilter>
+				</items>
+				<content>
+					<Text text="Tab Bar Content goes here ..." width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"
+						visible="true"/>
+				</content>
+			</IconTabBar>
+		</content>
+		<footer>
+			<OverflowToolbar>
+				<content>
+					<ToolbarSpacer/>
+					<Button text="Save" type="Emphasized" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
+					<Button text="Cancel" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
+				</content>
+			</OverflowToolbar>
+		</footer>
+		<headerContent/>
+	</Page>
+</mvc:View>

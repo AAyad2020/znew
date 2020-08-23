@@ -1,0 +1,17 @@
+{
+  "dataBinding": {
+    "/webapp/view/MasterPage1.view.xml": {
+      "entitySet": ""
+    },
+    "/webapp/view/DetailPage1.view.xml": {
+      "entitySet": ""
+    },
+    "/webapp/view/NewRequest.view.xml": {
+      "entitySet": ""
+    }
+  },
+  "deploy": {
+    "destination": "FID",
+    "name": "ZBSP_JVPOSTING"
+  }
+}

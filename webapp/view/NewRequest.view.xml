@@ -1,0 +1,203 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="com.sap.jvPosting.controller.NewRequest" xmlns="sap.m" xmlns:form="sap.ui.layout.form"
+	xmlns:new="controls" xmlns:core="sap.ui.core">
+	<Page showHeader="true" title="New Request" showFooter="true" showNavButton="true" navButtonPress="_onPageNavButtonPress">
+		<content>
+			<form:Form width="100%" editable="true" visible="true">
+				<form:title>
+					<core:Title text="Request Details" level="Auto" icon="sap-icon://detail-view"/>
+				</form:title>
+				<form:formContainers>
+					<form:FormContainer visible="true">
+						<form:formElements>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="{i18n>comp_code}" design="Bold" width="100%" required="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<Input placeholder="Enter Company Code" type="Text" showValueHelp="true" enabled="true" visible="true" width="auto" valueHelpOnly="true"
+										required="false" description="" id="comp_code_id" valueHelpRequest="onvaluehelpcompany" valueStateText="Invalid entry" maxLength="0"
+										value="{TableData>/Compcode}"/>
+								</form:fields>
+							</form:FormElement>
+							<!--<form:FormElement visible="true">-->
+							<!--	<form:label>-->
+							<!--		<Label text="{i18n>req_type}" design="Bold" width="100%" required="true" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+							<!--	</form:label>-->
+							<!--	<form:fields>-->
+							<!--		<Input placeholder="Select Request Type" type="Text" enabled="true" visible="true" width="auto"-->
+							<!--			valueHelpOnly="true" showValueHelp="true" valueHelpRequest="onvaluehelpreqtype" id="req_type_id" required="false" valueStateText="Invalid entry" maxLength="0" value="{TableData>/Jereqtype}"/>-->
+							<!--	</form:fields>-->
+							<!--</form:FormElement>-->
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="{i18n>req_type}" design="Bold" width="100%" required="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<Select enabled="true" id="req_type_id" width="100%" forceSelection="false" selectedKey="{TableData>/Reqtype}" change="onChangeReqType">
+										<core:Item key="JE" text="{i18n>JVtext}"/>
+										<core:Item key="RE" text="{i18n>REtext}"/>
+									</Select>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="{i18n>reason_jo}" design="Bold" width="100%" required="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<Input placeholder="Enter Reason of Journal Entry" type="Text" showValueHelp="false" enabled="true" visible="true" width="auto"
+										valueHelpOnly="false" id="reason_id" required="false" change="onChangeInput" valueStateText="Invalid entry" maxLength="0"
+										value="{TableData>/Reasonje}"/>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="{i18n>doc_type}" design="Bold" width="100%" required="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<Input placeholder="Enter Document Type" type="Text" showValueHelp="true" enabled="true" visible="true" width="auto" valueHelpOnly="true"
+										required="false" id="doc_type_id" valueHelpRequest="onvaluehelpdoctype" valueStateText="Invalid entry" maxLength="0"
+										value="{TableData>/Doctype}"/>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="{i18n>doc_curr}" design="Bold" width="100%" required="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<Input id="curr_id" placeholder="Enter Currency" type="Text" showValueHelp="true" enabled="true" visible="true" width="auto"
+										valueHelpOnly="true" valueHelpRequest="onvaluehelpcurr" required="true" valueStateText="Invalid entry" maxLength="0"
+										value="{TableData>/Currency}"/>
+								</form:fields>
+							</form:FormElement>
+						</form:formElements>
+						<form:title/>
+					</form:FormContainer>
+				</form:formContainers>
+				<form:layout>
+					<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+				</form:layout>
+			</form:Form>
+			<new:UploadFiles id="UploadCollection" instantUpload="false" sameFilenameAllowed="false" maximumFilenameLength="55" maximumFileSize="10"
+				change="onChange" noDataText="No Files found" multiple="true" fileSizeExceed="onFileSizeExceed" typeMissmatch="onTypeMissmatch"
+				uploadComplete="onUploadComplete" uploadUrl="" items="{/AttachFileJERESet}" beforeUploadStarts="onBeforeUploadStarts">
+				<UploadCollectionItem fileName="{Filename}" mimeType="{Mimetype}" documentId=""/>
+			</new:UploadFiles>
+			<!--Table of JV Posting -->
+			<Table id="JvitemsTable" inset="false" items="{TableData>/JEREItemSet}" width="95%" visible="true" mode="Delete" delete="onDeleteRow"
+				class="sapUiTinyMargin">
+				<headerToolbar>
+					<OverflowToolbar>
+						<content>
+							<Title text="Items" level="H2"/>
+							<ToolbarSpacer/>
+							<Button text="{i18n>addrow}" type="Default" icon="sap-icon://add" iconFirst="true" width="auto" enabled="true" visible="true"
+								press="addrowitem"/>
+						</content>
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+					<Column minScreenWidth="Tablet" width="auto">
+						<Text text="{i18n>itemtype}"/>
+					</Column>
+					<Column minScreenWidth="Desktop" width="auto">
+						<Text text="{i18n>Glaccount}"/>
+					</Column>
+					<Column minScreenWidth="Desktop" width="auto">
+						<Text text="{i18n>accassign}"/>
+					</Column>
+					<Column width="auto">
+						<Text text="{i18n>amount}"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Select enabled="true" width="100%" forceSelection="false" selectedKey="{TableData>Dcind}" valueState="{path:'TableData>Dcind',formatter:'.formatter.validationvalue'}">
+								<core:Item key="DR" text="{i18n>debit}"/>
+								<core:Item key="CR" text="{i18n>credit}"/>
+							</Select>
+							<Input placeholder="Enter GL Account" type="Text" showValueHelp="true" enabled="true" visible="true" width="auto" valueHelpOnly="true"
+								required="false" description="" valueHelpRequest="onvaluehelpglaccount" valueStateText="Invalid entry" maxLength="0"
+								value="{TableData>Glaccount1}" valueState="{path:'TableData>Glaccount1',formatter:'.formatter.validationvalue'}"/>
+							<Input placeholder="Enter Account Assignment" type="Text" showValueHelp="false" enabled="true" visible="true" width="auto"
+								valueHelpOnly="false" required="false" valueStateText="Invalid entry" maxLength="20" value="{TableData>Accassignmnt1}"/>
+							<!--value="{path:'TableData>Amount',formatter:'.formatter.getdecimal'}"-->
+							<Input placeholder="Enter Amount" change="onChangeInput" showValueHelp="false" enabled="true" visible="true" width="auto"
+								valueHelpOnly="false" required="false" valueStateText="Invalid entry"
+								valueState="{path:'TableData>Amount',formatter:'.formatter.validationvalue'}"
+								value="{path:'TableData>Amount',type:'sap.ui.model.odata.type.Decimal',constraints:{precision:13,scale:2},formatOptions:{groupingEnabled: false}}"/>
+							<!--,formatOptions:{maxFractionDigits:3}-->
+							<!--value="{path:'TableData>Amount',formatter:'.formatter.getdecimal'}"-->
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+			<!--Table of Re Classification -->
+			<Table id="ReitemsTable" inset="false" items="{TableData>/JEREItemSet}" width="95%" visible="false" mode="Delete" delete="onDeleteRow"
+				class="sapUiTinyMargin">
+				<headerToolbar>
+					<OverflowToolbar>
+						<content>
+							<Title text="Items" level="H2"/>
+							<ToolbarSpacer/>
+							<Button text="{i18n>addrow}" type="Default" icon="sap-icon://add" iconFirst="true" width="auto" enabled="true" visible="true"
+								press="addrowitem"/>
+						</content>
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+					<Column minScreenWidth="Tablet" width="auto">
+						<Text text="{i18n>currentgl}"/>
+					</Column>
+					<Column minScreenWidth="Desktop" width="auto">
+						<Text text="{i18n>currecntaccassign}"/>
+					</Column>
+					<Column minScreenWidth="Desktop" width="auto">
+						<Text text="{i18n>reqgl}"/>
+					</Column>
+					<Column width="auto">
+						<Text text="{i18n>reqaccountassign}"/>
+					</Column>
+					<Column width="auto">
+						<Text text="{i18n>amount}"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Input placeholder="Enter GL Account" type="Text" showValueHelp="true" enabled="true" visible="true" width="auto" valueHelpOnly="true"
+								required="false" description="" valueHelpRequest="onvaluehelpglaccount" valueStateText="Invalid entry" maxLength="0"
+								value="{TableData>Glaccount1}" valueState="{path:'TableData>Glaccount1',formatter:'.formatter.validationvalue'}"/>
+							<Input placeholder="Enter Account Assignment" type="Text" showValueHelp="false" enabled="true" visible="true" width="auto"
+								valueHelpOnly="false" required="false" valueState="{path:'TableData>Accassignmnt1',formatter:'.formatter.validationvalue'}" valueStateText="Invalid entry" maxLength="20" value="{TableData>Accassignmnt1}"/>
+							<Input placeholder="Enter GL Account" type="Text" showValueHelp="true" enabled="true" visible="true" width="auto" valueHelpOnly="true"
+								required="false" valueState="{path:'TableData>Glaccount2',formatter:'.formatter.validationvalue'}" valueHelpRequest="onvaluehelpglaccount" valueStateText="Invalid entry" maxLength="0"
+								value="{TableData>Glaccount2}"/>
+							<Input placeholder="Enter Account Assignment" type="Text" showValueHelp="false" enabled="true" visible="true" width="auto"
+								valueHelpOnly="false" valueState="{path:'TableData>Accassignmnt2',formatter:'.formatter.validationvalue'}" valueStateText="Invalid entry" maxLength="20" value="{TableData>Accassignmnt2}"/>
+							<!--value="{path:'TableData>Amount',formatter:'.formatter.getdecimal'}"-->
+							<Input placeholder="Enter Amount" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false" required="false"
+								valueStateText="Invalid entry" valueState="{path:'TableData>Amount',formatter:'.formatter.validationvalue'}"
+								value="{path:'TableData>Amount',type:'sap.ui.model.odata.type.Decimal',constraints:{precision:13,scale:2},formatOptions:{groupingEnabled: false}}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+		<footer>
+			<OverflowToolbar>
+				<content>
+					<Button icon="sap-icon://alert" text="{= ${message>/}.length }" visible="{= ${message>/}.length > 0 }" type="Reject"
+						press="onMessagePopoverPress"/>
+					<ToolbarSpacer width=""/>
+					<Button text="Create" type="Accept" icon="sap-icon://save" iconFirst="true" width="auto" enabled="true" visible="true"
+						iconDensityAware="false" press="onSave"/>
+					<Button text="Reset" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="onReset"/>
+				</content>
+			</OverflowToolbar>
+		</footer>
+		<headerContent/>
+		<subHeader/>
+		<customHeader/>
+	</Page>
+</mvc:View>

@@ -31,7 +31,7 @@ metadata:
     ai.sap.com/version: "0.0.1"
 spec:
   imagePullSecrets:
-    - name: shakespeare-docker
+    - name: dockersec
   entrypoint: core
   arguments:
     parameters:

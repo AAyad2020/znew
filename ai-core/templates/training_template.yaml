@@ -67,7 +67,7 @@ spec:
   - name: setup-pipeline
     metadata:
       labels:
-        ai.sap.com/resourcePlan: free
+        ai.sap.com/resourcePlan: starter
     outputs:
       artifacts:
         - name: setup_logs

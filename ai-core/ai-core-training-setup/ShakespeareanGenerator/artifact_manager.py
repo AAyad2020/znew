@@ -15,7 +15,7 @@ class ObjectStoreArtifactManager:
         )
 
     def upload_file_to_object_store(self):
-        url = "https://raw.githubusercontent.com/carlosbasto/shakespeare-language-model/main/ai-core/ai-core-datasets/tinyshakespeare.txt"
+        url = "https://github.com/AAyad2020/znew/blob/master/ai-core/ai-core-datasets/tinyshakespeare.txt"
         
         file_key = f"{self.obj_parameters.prefix}{self.obj_parameters.DATA_PATH + self.obj_parameters.DATA_NAME}"
         try:

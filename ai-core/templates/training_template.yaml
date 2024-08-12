@@ -4,7 +4,7 @@ metadata:
   name: "shakespeare-model"
   annotations:
     scenarios.ai.sap.com/name: "shakespeare-language-model"
-    scenarios.ai.sap.com/description: "Shakespeare Language Model"
+    scenarios.ai.sap.com/description: "Shakespeare Language Model "
     executables.ai.sap.com/name: "Shakespeare-language-model-trainer"
     executables.ai.sap.com/description: "Shakespeare Language Model Trainer Executable"
     artifacts.ai.sap.com/data.kind: "dataset"

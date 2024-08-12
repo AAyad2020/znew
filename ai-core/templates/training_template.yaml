@@ -67,7 +67,7 @@ spec:
   - name: setup-pipeline
     metadata:
       labels:
-        ai.sap.com/resourcePlan: basic
+        ai.sap.com/resourcePlan: starter
     outputs:
       artifacts:
         - name: setup_logs
@@ -106,7 +106,7 @@ spec:
   - name: train-pipeline
     metadata:
       labels:
-        ai.sap.com/resourcePlan: train.l
+        ai.sap.com/resourcePlan: starter
     inputs:
       artifacts:
         - name: data

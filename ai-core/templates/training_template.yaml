@@ -4,7 +4,7 @@ metadata:
   name: "shakespeare-model"
   annotations:
     scenarios.ai.sap.com/name: "shakespeare-language-model"
-    scenarios.ai.sap.com/description: "Shakespeare Language Model "
+    scenarios.ai.sap.com/description: "Shakespeare Language Model"
     executables.ai.sap.com/name: "Shakespeare-language-model-trainer"
     executables.ai.sap.com/description: "Shakespeare Language Model Trainer Executable"
     artifacts.ai.sap.com/data.kind: "dataset"
@@ -31,11 +31,17 @@ metadata:
     ai.sap.com/version: "0.0.1"
 spec:
   imagePullSecrets:
-    - name: dockersec
+    - name: shakespeare-docker
   entrypoint: core
   arguments:
     parameters:
-       - name: EVAL_FREQUENCY
+      - name: BATCH_SIZE
+        description: The number of training examples processed in one iteration during training. It determines the size of each batch in the training dataset.
+      - name: CONTEXT_LENGTH
+        description: Defines the maximum length of input sequences, typically representing the number of tokens in each sequence or block of text.
+      - name: ITERATION_LIMIT
+        description: Specifies the maximum number of iterations or training steps to be performed during the training process. It controls the duration of the training loop.
+      - name: EVAL_FREQUENCY
         description: Indicates how often model evaluation occurs during training, measured in the number of iterations or epochs between evaluations.
       - name: EVAL_STEPS
         description: Represents the number of evaluation steps to perform during each evaluation period. It determines the granularity of evaluation within each evaluation cycle.
@@ -47,6 +53,8 @@ spec:
         description: Specifies the number of parallel attention heads in the multi-head attention mechanism of the model. Each head learns different aspects of the input data.
       - name: NUM_LAYERS
         description: Represents the total number of transformer layers in the model architecture. It controls the depth and complexity of the model.
+      - name: DROPOUT
+        description: The probability of dropping out neurons or connections between layers during training, helping prevent overfitting by randomly deactivating some units.
       - name: DICTIONARY_SIZE
         description: Indicates the size of the vocabulary or dictionary used by the model, representing the total number of unique tokens or words in the dataset vocabulary.
   templates:
@@ -59,7 +67,7 @@ spec:
   - name: setup-pipeline
     metadata:
       labels:
-        ai.sap.com/resourcePlan: starter
+        ai.sap.com/resourcePlan: basic
     outputs:
       artifacts:
         - name: setup_logs
@@ -98,7 +106,7 @@ spec:
   - name: train-pipeline
     metadata:
       labels:
-        ai.sap.com/resourcePlan: starter
+        ai.sap.com/resourcePlan: train.l
     inputs:
       artifacts:
         - name: data
@@ -128,6 +136,12 @@ spec:
       args: 
           - python /app/src/main.py
       env:
+      - name: BATCH_SIZE 
+        value: "{{workflow.parameters.BATCH_SIZE}}"
+      - name: CONTEXT_LENGTH 
+        value: "{{workflow.parameters.CONTEXT_LENGTH}}"
+      - name: ITERATION_LIMIT 
+        value: "{{workflow.parameters.ITERATION_LIMIT}}"
       - name: EVAL_FREQUENCY 
         value: "{{workflow.parameters.EVAL_FREQUENCY}}"
       - name: EVAL_STEPS 
@@ -140,5 +154,7 @@ spec:
         value: "{{workflow.parameters.ATTENTION_HEADS}}"
       - name: NUM_LAYERS 
         value: "{{workflow.parameters.NUM_LAYERS}}"
+      - name: DROPOUT 
+        value: "{{workflow.parameters.DROPOUT}}"
       - name: DICTIONARY_SIZE 
         value: "{{workflow.parameters.DICTIONARY_SIZE}}"

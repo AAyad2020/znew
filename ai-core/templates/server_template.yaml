@@ -36,7 +36,7 @@ spec:
          maxReplicas: 5
          containers:
          - name: kserve-container
-           image: docker.io/<your_docker_user>/shakespeare-server-generator:0.0.1
+           image: docker.io/ahmedayad99/shakespeare-server-generator:0.0.1
            ports:
              - containerPort: 9001
                protocol: TCP   

@@ -33,7 +33,7 @@ spec:
          imagePullSecrets:
          - name: shakespeare-docker-repo
          minReplicas: 1
-         maxReplicas: 5
+         maxReplicas: 3
          containers:
          - name: kserve-container
            image: docker.io/ahmedayad99/shakespeare-server-generator:0.0.1

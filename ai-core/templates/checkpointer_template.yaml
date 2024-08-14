@@ -67,7 +67,7 @@ spec:
   - name: setup-pipeline
     metadata:
       labels:
-        ai.sap.com/resourcePlan: basic
+        ai.sap.com/resourcePlan: starter
     outputs:
       artifacts:
         - name: setup_logs
@@ -77,7 +77,7 @@ spec:
             none:
               {}
     container:
-      image: docker.io/<your_docker_user>/shakespeare-checkpointer-setup:0.0.1
+      image: docker.io/ahmedayad99/shakespeare-checkpointer-setup:0.0.1
       imagePullPolicy: Always
       command: ["/bin/sh", "-c"]
       args: 
@@ -106,7 +106,7 @@ spec:
   - name: train-pipeline
     metadata:
       labels:
-        ai.sap.com/resourcePlan: train.l
+        ai.sap.com/resourcePlan: starter
     inputs:
       artifacts:
         - name: data
@@ -129,7 +129,7 @@ spec:
             none:
               {}                
     container:
-      image: docker.io/<your_docker_user>/shakespeare-checkpointer:0.0.1
+      image: docker.io/ahmedayad99/shakespeare-checkpointer:0.0.1
       imagePullPolicy: Always
       command: ["/bin/sh", "-c"]
       args: 

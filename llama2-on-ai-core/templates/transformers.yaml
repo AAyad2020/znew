@@ -25,7 +25,7 @@ spec:
         imagePullSecrets:
           - name: felixdockersecrect
         minReplicas: 1
-        maxReplicas: 5
+        maxReplicas: 3
         containers:
         - name: kserve-container
           image: docker.io/bfwork/huggingcore-customgpu

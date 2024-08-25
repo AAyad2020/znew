@@ -27,7 +27,7 @@ spec:
         description: "Enable debug or not. Valid value as true or false"
       - name: resource_plan
         type: "string"
-        default: "infer.s"
+        default: "starter"
         description: "Resource Plan of SAP AI Core. Supported: infer.s, infer.m, infer.l, train.l"
   template:
     apiVersion: "serving.kserve.io/v1beta1"
@@ -46,7 +46,7 @@ spec:
         maxReplicas: 1
         containers:
         - name: kserve-container
-          image: docker.io/<YOUR_DOCKER_USER>/local-ai:ai-core
+          image: docker.io/ahmedayad99/local-ai:ai-core
           ports:
             - containerPort: 18080
               protocol: TCP

@@ -41,7 +41,7 @@ spec:
     spec: |
       predictor:
         imagePullSecrets:
-        - name: <YOUR_DOCKER_SECRET>
+        - name: milton-credentials
         minReplicas: 1
         maxReplicas: 1
         containers:

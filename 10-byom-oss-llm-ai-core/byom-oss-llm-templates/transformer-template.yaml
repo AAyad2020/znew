@@ -33,12 +33,12 @@ spec:
     spec: |
       predictor:
         imagePullSecrets:
-        - name: <YOUR_DOCKER_SECRET>
+        - name: milton-credentials
         minReplicas: 1
         maxReplicas: 1
         containers:
         - name: kserve-container
-          image: docker.io/<YOUR_DOCKER_USER>/transformer:ai-core
+          image: docker.io/ahmedayad99/transformer:ai-core
           ports:
             - containerPort: 8080
               protocol: TCP
